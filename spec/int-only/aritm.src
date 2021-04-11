@@ -59,10 +59,10 @@
         <arg1 type="string"> </arg1>
     </instruction>
 
-    <instruction order="170" opcode="EQ">
+    <instruction order="170" opcode="AND">
         <arg1 type="var">GF@val</arg1>
-        <arg2 type="int">10</arg2>
-        <arg3 type="float">10</arg3>
+        <arg2 type="bool">true</arg2>
+        <arg3 type="bool">true</arg3>
     </instruction>
     <instruction order="180" opcode="WRITE">
         <arg1 type="var">GF@val</arg1>

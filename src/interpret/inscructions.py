@@ -296,14 +296,46 @@ class inscructions:
 
         self.ip += 1
 
-    def and_f(self):
-        pass
+    def and_f(self, args):
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
 
-    def or_f(self):
-        pass
+        out = a and b
 
-    def not_f(self):
-        pass
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
+
+    def or_f(self, args):
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
+
+        out = a or b
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
+
+    def not_f(self, args):
+        a = self._typed_value(args[1])
+
+        out = not a
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
 
     def int2char(self, args):
         self.symtable.set_value(
