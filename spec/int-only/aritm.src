@@ -48,9 +48,9 @@
         <arg1 type="string"> </arg1>
     </instruction>
     <instruction order="140" opcode="DIV">
-        <arg1 type="var">GF@val</arg1>
         <arg2 type="int">1</arg2>
         <arg3 type="int">3</arg3>
+        <arg1 type="var">GF@val</arg1>
     </instruction>
     <instruction order="150" opcode="WRITE">
         <arg1 type="var">GF@val</arg1>

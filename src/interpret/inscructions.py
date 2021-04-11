@@ -60,9 +60,6 @@ class inscructions:
                     errors.operands_types("bad type of operand expected {} given ['var']".format(needs[i]))
             elif self._type_of(args[i]) not in needs[i]:
                 errors.operands_types("bad type of operand expected {} given {}".format(needs[i], self._type_of(args[i])))
-
-            if args[i].tag.lower() != 'arg{}'.format(i + 1):
-                errors.xml_struct("unexpected tag for argument {} expected {}".format(args[i].tag.lower(), 'arg{}'.format(i)))
                 
 
     def _value(self, arg):
