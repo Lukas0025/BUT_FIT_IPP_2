@@ -61,21 +61,24 @@ class inscructions:
             exit(1)
 
         self.symtable.set_value(
-            self._get_typeval(args[0].text),
-            self.symtable.get_type_str(self._get_typeval(args[1].text)),
-            self.symtable.get_value_str(self._get_typeval(args[1].text))
+            self._get_typeval(args[0]),
+            self.symtable.get_type_str(self._get_typeval(args[1])),
+            self.symtable.get_value_str(self._get_typeval(args[1]))
         )
 
         self.ip += 1
 
     def createframe(self, args):
         self.symtable.createframe()
+        self.ip += 1
 
     def pushframe(self, args):
         self.symtable.pushframe()
+        self.ip += 1
     
     def popframe(self, args):
         self.symtable.popframe()
+        self.ip += 1
 
     def defvar(self, args):
         self.symtable.def_var(
@@ -90,11 +93,25 @@ class inscructions:
     def return_f(self):
         pass
 
-    def pushs(self):
-        pass
+    def pushs(self, args):
+        self.stack.append({
+            'type': self.symtable.get_type_str(self._get_typeval(args[0])),
+            'value': self.symtable.get_value_str(self._get_typeval(args[0]))
+        })
 
-    def pops(self):
-        pass
+        self.ip += 1
+
+
+    def pops(self, args):
+        var = self.stack.pop()
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            var['type'],
+            var['value']
+        )
+
+        self.ip += 1
 
     def add(self):
         pass
@@ -126,8 +143,14 @@ class inscructions:
     def not_f(self):
         pass
 
-    def int2char(self):
-        pass
+    def int2char(self, args):
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            self.symtable.get_type_str(self._get_typeval(args[1])),
+            chr(int(self.symtable.get_value_str(self._get_typeval(args[1]))))
+        )
+
+        self.ip += 1
 
     def str2int(self):
         pass
@@ -139,7 +162,7 @@ class inscructions:
         print(
             self.symtable.get_value_str(
                 self._get_typeval(args[0])
-            )
+            ), end = ''
         )
 
         self.ip += 1

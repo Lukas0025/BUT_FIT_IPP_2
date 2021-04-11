@@ -6,6 +6,7 @@ class ipp21(inscructions):
         self.ip = 0
         self.symtable = symtable()
         self.program = program
+        self.stack = []
 
     def run(self, instruction):
         callable_instruction = self.get_inscrustion(instruction.attrib['opcode'])
