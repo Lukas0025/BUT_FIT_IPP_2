@@ -45,6 +45,26 @@ class inscructions:
     def undefined(self):
         exit(1)
 
+    def args_check(self, needs, args):
+        if len(needs) != len(args):
+            errors.xml_struct("bad args count for opcodes")
+
+        for i in range(len(needs)):
+            try:
+                vartype = self.program._get_lower_attrib(args[i])['type']
+            except KeyError:
+                errors.xml_struct("no type attribute for arg")
+
+            if vartype == "var":
+                if "var" not in needs[i]:
+                    errors.operands_types("bad type of operand expected {} given ['var']".format(needs[i]))
+            elif self._type_of(args[i]) not in needs[i]:
+                errors.operands_types("bad type of operand expected {} given {}".format(needs[i], self._type_of(args[i])))
+
+            if args[i].tag.lower() != 'arg{}'.format(i + 1):
+                errors.xml_struct("unexpected tag for argument {} expected {}".format(args[i].tag.lower(), 'arg{}'.format(i)))
+                
+
     def _value(self, arg):
         return self.symtable.get_value_str(self._get_typeval(arg))
 
@@ -82,8 +102,10 @@ class inscructions:
             return arg.text
 
     def move(self, args):
-        if len(args) != 2:
-            exit(1)
+        self.args_check([
+            ["var"],
+            ['string', 'int', 'float', 'bool', 'nil']
+        ], args)
 
         self.symtable.set_value(
             self._get_typeval(args[0]),
@@ -94,18 +116,25 @@ class inscructions:
         self.ip += 1
 
     def createframe(self, args):
+        self.args_check([], args)
         self.symtable.createframe()
         self.ip += 1
 
     def pushframe(self, args):
+        self.args_check([], args)
         self.symtable.pushframe()
         self.ip += 1
     
     def popframe(self, args):
+        self.args_check([], args)
         self.symtable.popframe()
         self.ip += 1
 
     def defvar(self, args):
+        self.args_check([
+            ['var']
+        ], args)
+
         self.symtable.def_var(
             self._get_typeval(args[0])
         )
@@ -119,6 +148,11 @@ class inscructions:
         pass
 
     def pushs(self, args):
+        self.args_check([
+            ['var'],
+            ['string', 'int', 'float', 'bool', 'nil']
+        ], args)
+
         self.stack.append({
             'type': self._type_of(args[0]),
             'value': self._value(args[0])
@@ -128,6 +162,10 @@ class inscructions:
 
 
     def pops(self, args):
+        self.args_check([
+            ['var']
+        ], args)
+
         var = self.stack.pop()
 
         self.symtable.set_value(
@@ -139,13 +177,16 @@ class inscructions:
         self.ip += 1
 
     def add(self, args):
+        self.args_check([
+            ['var'],
+            ['int', 'float'],
+            ['int', 'float']
+        ], args)
+
         a = self._typed_value(args[1])
         a_type = self._type_of(args[1])
         b = self._typed_value(args[2])
         b_type = self._type_of(args[2])
-
-        if (b_type not in ['int', 'float'] or a_type not in ['int', 'float']):
-            errors.operands_types("cant do add with {} and {}".format(a_type, b_type))
 
         if (b_type == 'float' or a_type == 'float'):
             out_type = 'float'
@@ -163,13 +204,16 @@ class inscructions:
         self.ip += 1
 
     def sub(self, args):
+        self.args_check([
+            ['var'],
+            ['int', 'float'],
+            ['int', 'float']
+        ], args)
+
         a = self._typed_value(args[1])
         a_type = self._type_of(args[1])
         b = self._typed_value(args[2])
         b_type = self._type_of(args[2])
-
-        if (b_type not in ['int', 'float'] or a_type not in ['int', 'float']):
-            errors.operands_types("cant do add with {} and {}".format(a_type, b_type))
 
         if (b_type == 'float' or a_type == 'float'):
             out_type = 'float'
@@ -187,13 +231,16 @@ class inscructions:
         self.ip += 1
 
     def mul(self, args):
+        self.args_check([
+            ['var'],
+            ['int', 'float'],
+            ['int', 'float']
+        ], args)
+
         a = self._typed_value(args[1])
         a_type = self._type_of(args[1])
         b = self._typed_value(args[2])
         b_type = self._type_of(args[2])
-
-        if (b_type not in ['int', 'float'] or a_type not in ['int', 'float']):
-            errors.operands_types("cant do add with {} and {}".format(a_type, b_type))
 
         if (b_type == 'float' or a_type == 'float'):
             out_type = 'float'
@@ -211,13 +258,16 @@ class inscructions:
         self.ip += 1
 
     def idiv(self, args):
+        self.args_check([
+            ['var'],
+            ['int', 'float'],
+            ['int', 'float']
+        ], args)
+
         a = self._typed_value(args[1])
         a_type = self._type_of(args[1])
         b = self._typed_value(args[2])
         b_type = self._type_of(args[2])
-
-        if (b_type not in ['int', 'float'] or a_type not in ['int', 'float']):
-            errors.operands_types("cant do add with {} and {}".format(a_type, b_type))
 
         if (b_type == 'float' or a_type == 'float'):
             out_type = 'float'
@@ -235,13 +285,14 @@ class inscructions:
         self.ip += 1
 
     def div(self, args):
-        a = self._typed_value(args[1])
-        a_type = self._type_of(args[1])
-        b = self._typed_value(args[2])
-        b_type = self._type_of(args[2])
+        self.args_check([
+            ['var'],
+            ['int', 'float'],
+            ['int', 'float']
+        ], args)
 
-        if (b_type not in ['int', 'float'] or a_type not in ['int', 'float']):
-            errors.operands_types("cant do add with {} and {}".format(a_type, b_type))
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
 
         out = a / b
 
@@ -254,6 +305,12 @@ class inscructions:
         self.ip += 1
 
     def lt(self, args):
+        self.args_check([
+            ['var'],
+            ['string', 'int', 'float', 'bool'],
+            ['string', 'int', 'float', 'bool']
+        ], args)
+
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
@@ -269,6 +326,12 @@ class inscructions:
 
 
     def gt(self, args):
+        self.args_check([
+            ['var'],
+            ['string', 'int', 'float', 'bool'],
+            ['string', 'int', 'float', 'bool']
+        ], args)
+
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
@@ -283,6 +346,12 @@ class inscructions:
         self.ip += 1
 
     def eq(self, args):
+        self.args_check([
+            ['var'],
+            ['string', 'int', 'float', 'bool'],
+            ['string', 'int', 'float', 'bool']
+        ], args)
+
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
@@ -297,6 +366,12 @@ class inscructions:
         self.ip += 1
 
     def and_f(self, args):
+        self.args_check([
+            ['var'],
+            ['bool'],
+            ['bool']
+        ], args)
+
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
@@ -311,6 +386,12 @@ class inscructions:
         self.ip += 1
 
     def or_f(self, args):
+        self.args_check([
+            ['var'],
+            ['bool'],
+            ['bool']
+        ], args)
+
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
@@ -325,6 +406,12 @@ class inscructions:
         self.ip += 1
 
     def not_f(self, args):
+        self.args_check([
+            ['var'],
+            ['bool'],
+            ['bool']
+        ], args)
+
         a = self._typed_value(args[1])
 
         out = not a
@@ -338,16 +425,33 @@ class inscructions:
         self.ip += 1
 
     def int2char(self, args):
+        self.args_check([
+            ['var'],
+            ['int']
+        ], args)
+
         self.symtable.set_value(
             self._get_typeval(args[0]),
-            self.symtable.get_type_str(self._get_typeval(args[1])),
-            chr(int(self.symtable.get_value_str(self._get_typeval(args[1]))))
+            self._type_of(args[1]),
+            chr(self._typed_value(args[1]))
         )
 
         self.ip += 1
 
-    def str2int(self):
-        pass
+    def str2int(self, args):
+        self.args_check([
+            ['var'],
+            ['string'],
+            ['int']
+        ], args)
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            self._type_of(args[1]),
+            ord(self._typed_value(args[1])[self._typed_value(args[2])])
+        )
+
+        self.ip += 1
 
     def read(self):
         pass
