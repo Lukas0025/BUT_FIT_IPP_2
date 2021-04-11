@@ -1,7 +1,7 @@
 from program_file import program_file
 from interpret import ipp21
 
-program   = program_file("../../spec/int-only/stack_test.src")
+program   = program_file("../../spec/int-only/aritm.src")
 interpret = ipp21(program)
 
 while True:

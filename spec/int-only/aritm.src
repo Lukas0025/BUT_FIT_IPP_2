@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode21" name="Stack test">
+    <instruction order="7" opcode="DEFVAR">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="8" opcode="ADD">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">1</arg2>
+        <arg3 type="int">10</arg3>
+    </instruction>
+    <instruction order="40" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="41" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
+    <instruction order="50" opcode="SUB">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">1</arg2>
+        <arg3 type="int">10</arg3>
+    </instruction>
+    <instruction order="60" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="70" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
+    <instruction order="80" opcode="MUL">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">2</arg2>
+        <arg3 type="int">11</arg3>
+    </instruction>
+    <instruction order="90" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="100" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
+    <instruction order="110" opcode="IDIV">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">10</arg2>
+        <arg3 type="int">2</arg3>
+    </instruction>
+    <instruction order="120" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="130" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
+    <instruction order="140" opcode="DIV">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">1</arg2>
+        <arg3 type="int">3</arg3>
+    </instruction>
+    <instruction order="150" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="160" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
+</program>
