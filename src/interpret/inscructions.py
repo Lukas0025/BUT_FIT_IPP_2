@@ -59,6 +59,13 @@ class inscructions:
             return int(value)
         elif (typed == 'float'):
             return float(value)
+        elif typed == 'bool':
+            if value.lower() == "true":
+                return True
+            elif value.lower() == "false":
+                return False
+            
+            errors.operand_value("bad value of operand type Bool")
         else:
             return value
 
@@ -246,14 +253,48 @@ class inscructions:
 
         self.ip += 1
 
-    def lt(self):
-        pass
+    def lt(self, args):
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
 
-    def gt(self):
-        pass
+        out = a < b
 
-    def eq(self):
-        pass
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
+
+
+    def gt(self, args):
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
+
+        out = a > b
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
+
+    def eq(self, args):
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
+
+        out = a == b
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            'bool',
+            str(out)
+        )
+
+        self.ip += 1
 
     def and_f(self):
         pass

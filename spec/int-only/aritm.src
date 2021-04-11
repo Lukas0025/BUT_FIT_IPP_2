@@ -58,4 +58,16 @@
     <instruction order="160" opcode="WRITE">
         <arg1 type="string"> </arg1>
     </instruction>
+
+    <instruction order="170" opcode="EQ">
+        <arg1 type="var">GF@val</arg1>
+        <arg2 type="int">10</arg2>
+        <arg3 type="float">10</arg3>
+    </instruction>
+    <instruction order="180" opcode="WRITE">
+        <arg1 type="var">GF@val</arg1>
+    </instruction>
+    <instruction order="190" opcode="WRITE">
+        <arg1 type="string"> </arg1>
+    </instruction>
 </program>
