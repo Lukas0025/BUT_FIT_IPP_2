@@ -56,19 +56,23 @@ class inscructions:
     def decode_escapes(self, string):
         escape = re.compile("\\\\[0-9][0-9][0-9]")
 
-        str_array = list(string)
-        for es in escape.finditer(string):
+        es = escape.search(string)
+        while es != None:
+            str_array = list(string)
+
             str_array[es.start()] = chr(int(es.group()[1:]))
-                
             
             str_array.pop(es.start() + 1)
             str_array.pop(es.start() + 1)
             str_array.pop(es.start() + 1)
+            
+            string = "".join(str_array)
+            es = escape.search(string)
 
-        if "\\" in str_array:
+        if "\\" in list(string):
             errors.string("fail to decode escape in '{}'".format(string))
 
-        return "".join(str_array)
+        return string
 
     ##
     # function or undefined opcode
