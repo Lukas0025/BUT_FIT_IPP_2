@@ -766,15 +766,47 @@ class inscructions:
     # interpret instruction JUMPIFEQ
     # @param self
     # @param args args for inscruction
-    def jumpifeq(self):
-        pass
+    def jumpifeq(self, args):
+        self.args_check([
+            ['var'],
+            ['label'],
+            ['string', 'int', 'float', 'bool', 'type'],
+            ['string', 'int', 'float', 'bool', 'type']
+        ], args)
+
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
+
+        if self._type_of(args[1]) != self._typed_value(args[2]):
+            errors.operands_types("fail to do JUMPIFEQ with this types")
+
+        if (a == b):
+            return self.jump(args)
+
+        self.ip += 1
 
     ##
     # interpret instruction JUMPIFNEQ
     # @param self
     # @param args args for inscruction
-    def jumpifneq(self):
-        pass
+    def jumpifneq(self, args):
+        self.args_check([
+            ['var'],
+            ['label'],
+            ['string', 'int', 'float', 'bool', 'type'],
+            ['string', 'int', 'float', 'bool', 'type']
+        ], args)
+
+        a = self._typed_value(args[1])
+        b = self._typed_value(args[2])
+
+        if self._type_of(args[1]) != self._typed_value(args[2]):
+            errors.operands_types("fail to do JUMPIFEQ with this types")
+
+        if (a != b):
+            return self.jump(args)
+            
+        self.ip += 1
 
     ##
     # interpret instruction EXIT
