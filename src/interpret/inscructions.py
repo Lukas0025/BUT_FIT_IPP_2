@@ -52,7 +52,7 @@ class inscructions:
     # @param self
     # @param args args for inscruction
     def undefined(self, args):
-        exit(1)
+        error.xml_struct("Undefined OPCODE")
 
     ##
     # check args types and length if bad exit
@@ -415,6 +415,9 @@ class inscructions:
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
+        if self._type_of(args[1]) != self._typed_value(args[2]):
+            errors.operands_types("fail to do LT with this types")
+
         out = a < b
 
         self.symtable.set_value(
@@ -439,6 +442,9 @@ class inscructions:
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
+        if self._type_of(args[1]) != self._typed_value(args[2]):
+            errors.operands_types("fail to do LT with this types")
+
         out = a > b
 
         self.symtable.set_value(
@@ -462,6 +468,9 @@ class inscructions:
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
+
+        if self._type_of(args[1]) != self._typed_value(args[2]):
+            errors.operands_types("fail to do LT with this types")
 
         out = a == b
 
