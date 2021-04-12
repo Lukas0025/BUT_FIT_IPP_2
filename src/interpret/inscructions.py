@@ -225,15 +225,25 @@ class inscructions:
     # interpret instruction CALL
     # @param self
     # @param args args for inscruction
-    def call(self):
-        pass
+    def call(self, args):
+        self.args_check([
+            ['label'],
+        ], args)
+
+        self.return_stack.append(self.ip + 1)
+        self.jump(args)
 
     ##
     # interpret instruction RETURN
     # @param self
     # @param args args for inscruction
-    def return_f(self):
-        pass
+    def return_f(self, args):
+        self.args_check([], args)
+
+        if len(self.return_stack) < 1:
+            errors.missing_val_ret_stack("in return stack is no address to return")
+
+        self.ip = self.return_stack.pop()
 
     ##
     # interpret instruction PUSHS
@@ -845,6 +855,8 @@ class inscructions:
         errors.eprint("\n------------------------")
         errors.eprint("IPP21 interpret status\n")
         errors.eprint("inscruction pointer: {}".format(self.ip))
+        errors.eprint("stack: {}".format(self.stack))
+        errors.eprint("return stack: {}".format(self.return_stack))
         errors.eprint("\nsymtable:")
         errors.eprint("   labels: {}".format(self.symtable.labels))
         errors.eprint("   frames: {}".format(self.symtable.frames))
