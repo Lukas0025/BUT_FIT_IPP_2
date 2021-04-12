@@ -29,7 +29,7 @@ class ipp21(inscructions):
         if 'opcode' not in attrs:
             errors.xml_struct("no opcode for inscruction ip:{}".format(self.ip))
 
-        return attrs['opcode']
+        return attrs['opcode'].lower()
 
     def run(self, input_file):
 

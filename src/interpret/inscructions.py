@@ -160,7 +160,11 @@ class inscructions:
             errors.xml_struct("bad type in type attrib {}".format(vartype))
 
         if vartype != 'var' and vartype != 'label':
-            return "{}@{}".format(vartype, arg.text)
+            varvalue = arg.text
+            if varvalue == None:
+                varvalue = ""
+
+            return "{}@{}".format(vartype, varvalue)
         else:
             # @todo check var/label is valid
             return arg.text
@@ -235,7 +239,7 @@ class inscructions:
         ], args)
 
         self.return_stack.append(self.ip + 1)
-        self.jump(args)
+        self.jump([args[0]])
 
     ##
     # interpret instruction RETURN
@@ -828,7 +832,6 @@ class inscructions:
     # @param args args for inscruction
     def jumpifeq(self, args):
         self.args_check([
-            ['var'],
             ['label'],
             ['string', 'int', 'float', 'bool', 'type'],
             ['string', 'int', 'float', 'bool', 'type']
@@ -837,11 +840,14 @@ class inscructions:
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._typed_value(args[2]):
-            errors.operands_types("fail to do JUMPIFEQ with this types")
+        if self._type_of(args[1]) != self._type_of(args[2]):
+            errors.operands_types("fail to do JUMPIFEQ with this types {} and {}".format(
+                self._type_of(args[1]),
+                self._type_of(args[2])
+            ))
 
         if (a == b):
-            return self.jump(args)
+            return self.jump([args[0]])
 
         self.ip += 1
 
@@ -851,7 +857,6 @@ class inscructions:
     # @param args args for inscruction
     def jumpifneq(self, args):
         self.args_check([
-            ['var'],
             ['label'],
             ['string', 'int', 'float', 'bool', 'type'],
             ['string', 'int', 'float', 'bool', 'type']
@@ -860,11 +865,14 @@ class inscructions:
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._typed_value(args[2]):
-            errors.operands_types("fail to do JUMPIFEQ with this types")
+        if self._type_of(args[1]) != self._type_of(args[2]):
+            errors.operands_types("fail to do JUMPIFNEQ with this types {} and {}".format(
+                self._type_of(args[1]),
+                self._type_of(args[2])
+            ))
 
         if (a != b):
-            return self.jump(args)
+            return self.jump([args[0]])
             
         self.ip += 1
 

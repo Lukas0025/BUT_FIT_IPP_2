@@ -43,7 +43,7 @@ class symtable:
         self.labels = {}
 
     def _parse_name(self, name):
-        name_split = name.split("@")
+        name_split = name.split("@", 1)
 
         return {'type': name_split[0].lower(), 'name': name_split[1]}
 
