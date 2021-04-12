@@ -750,10 +750,16 @@ class inscructions:
             ['int']
         ], args)
 
+        index = self._typed_value(args[2])
+        string = self._typed_value(args[1])
+
+        if index not in range(len(string)):
+            errors.string("try get char outside range of string")
+
         self.symtable.set_value(
             self._get_typeval(args[0]),
             "string",
-            self._typed_value(args[1])[self._typed_value(args[2])]
+            string[index]
         )
 
         self.ip += 1
