@@ -615,28 +615,78 @@ class inscructions:
     # @param self
     # @param args args for inscruction
     def concat(self):
-        pass
+        self.args_check([
+            ['var'],
+            ['string'],
+            ['string']
+        ], args)
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            "string",
+            self._typed_value(args[1]) + self._typed_value(args[2])
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction STRLEN
     # @param self
     # @param args args for inscruction
     def strlen(self):
-        pass
+        self.args_check([
+            ['var'],
+            ['string']
+        ], args)
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            "int",
+            len(self._typed_value(args[1]))
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction GETCHAR
     # @param self
     # @param args args for inscruction
     def getchar(self):
-        pass
+        self.args_check([
+            ['var'],
+            ['string'],
+            ['int']
+        ], args)
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            "string",
+            self._typed_value(args[1])[self._typed_value(args[2])]
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction SETCHAR
     # @param self
     # @param args args for inscruction
     def setchar(self):
-        pass
+        self.args_check([
+            ['var'],
+            ['int'],
+            ['string']
+        ], args)
+
+        curr = self._typed_value(args[0])
+        curr[self._typed_value(args[1])] = self._typed_value(args[2])[0]
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            "string",
+            curr
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction TYPE
