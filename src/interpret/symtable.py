@@ -40,7 +40,7 @@ class symtable:
 
     def __init__(self):
         self.frames = [frame()]
-        self.labels = []
+        self.labels = {}
 
     def _parse_name(self, name):
         name_split = name.split("@")
@@ -48,7 +48,7 @@ class symtable:
         return {'type': name_split[0].lower(), 'name': name_split[1]}
 
     def _get_frame(self, name):
-
+        
         if name == 'gf':
             return self.frames[0]
         elif name == 'lf':
@@ -118,13 +118,13 @@ class symtable:
         frame.def_var(parsed_name['name'])
 
     def def_label(self, label, addr):
-        if name in self.labels:
+        if label in self.labels:
             errors.semantic("{} label exist".format(label))
 
         self.labels[label] = addr
 
     def get_label(self, label):
-        if name not in self.labels:
+        if label not in self.labels:
             errors.semantic("{} label not exist".format(label))
 
         return self.labels[label]

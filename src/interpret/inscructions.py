@@ -1,4 +1,5 @@
 import errors
+import re
 
 class inscructions:
     ##
@@ -48,11 +49,33 @@ class inscructions:
         }.get(opcode.lower(), self.undefined)
 
     ##
+    # Decode string escape \XXX to unicode char in string
+    # @param self
+    # @param string string with escapes
+    # @return decoded string
+    def decode_escapes(self, string):
+        escape = re.compile("\\\\[0-9][0-9][0-9]")
+
+        str_array = list(string)
+        for es in escape.finditer(string):
+            str_array[es.start()] = chr(int(es.group()[1:]))
+                
+            
+            str_array.pop(es.start() + 1)
+            str_array.pop(es.start() + 1)
+            str_array.pop(es.start() + 1)
+
+        if "\\" in str_array:
+            errors.string("fail to decode escape in '{}'".format(string))
+
+        return "".join(str_array)
+
+    ##
     # function or undefined opcode
     # @param self
     # @param args args for inscruction
     def undefined(self, args):
-        error.xml_struct("Undefined OPCODE")
+        errors.xml_struct("Undefined OPCODE ip:{}".format(self.ip))
 
     ##
     # check args types and length if bad exit
@@ -61,19 +84,19 @@ class inscructions:
     # @param args args for inscruction
     def args_check(self, needs, args):
         if len(needs) != len(args):
-            errors.xml_struct("bad args count for opcodes")
+            errors.xml_struct("bad args count for opcodes ip:{}".format(self.ip))
 
         for i in range(len(needs)):
             try:
                 vartype = self.program._get_lower_attrib(args[i])['type']
             except KeyError:
-                errors.xml_struct("no type attribute for arg")
+                errors.xml_struct("no type attribute for arg ip:{}".format(self.ip))
 
-            if vartype == "var":
-                if "var" not in needs[i]:
-                    errors.operands_types("bad type of operand expected {} given ['var']".format(needs[i]))
+            if "var" in needs[i] or "label" in needs[i]:
+                if vartype not in needs[i]:
+                    errors.operands_types("bad type of operand expected {} given ['{}'] ip:{}".format(needs[i], vartype,self.ip))
             elif self._type_of(args[i]) not in needs[i]:
-                errors.operands_types("bad type of operand expected {} given {}".format(needs[i], self._type_of(args[i])))
+                errors.operands_types("bad type of operand expected {} given {} ip:{}".format(needs[i], self._type_of(args[i]), self.ip))
                 
     ##
     # get value of expression of value ex. int@-10 returns -10 
@@ -129,12 +152,13 @@ class inscructions:
         except KeyError:
             errors.xml_struct("no type attribute for arg")
 
-        if valtype not in ['int', 'float', 'string', 'label', 'bool', 'var', 'type']:
+        if vartype not in ['int', 'float', 'string', 'label', 'bool', 'var', 'type']:
             errors.xml_struct("bad type in type attrib {}".format(vartype))
 
         if vartype != 'var' and vartype != 'label':
             return "{}@{}".format(vartype, arg.text)
         else:
+            # @todo check var/label is valid
             return arg.text
 
     ##
@@ -602,10 +626,14 @@ class inscructions:
     # @param self
     # @param args args for inscruction
     def write(self, args):
+        self.args_check([
+            ['string', 'int', 'float', 'bool', 'type', 'nil']
+        ], args)
+
         print(
-            self.symtable.get_value_str(
+            self.decode_escapes(self.symtable.get_value_str(
                 self._get_typeval(args[0])
-            ), end = ''
+            )), end = ''
         )
 
         self.ip += 1
@@ -715,20 +743,24 @@ class inscructions:
             ['label']
         ], args)
 
+        self.ip += 1
+
         self.symtable.def_label(
-            self._val(arg[1])
+            self._get_typeval(args[0]),
             self.ip
         )
-
-        self.ip += 1
 
 
     ##
     # interpret instruction JUMP
     # @param self
     # @param args args for inscruction
-    def jump(self):
-        pass
+    def jump(self, args):
+        self.args_check([
+            ['label']
+        ], args)
+
+        self.ip = self.symtable.get_label(self._get_typeval(args[0]))
 
     ##
     # interpret instruction JUMPIFEQ

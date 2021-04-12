@@ -20,7 +20,7 @@ def eprint(*args, **kwargs):
 # @param msg error message
 # @return None
 def xml(msg):
-    eprint("XML parse error: {}".fomrat(msg))
+    eprint("XML parse error: {}".format(msg))
     exit(31)
 
 ##
@@ -65,7 +65,7 @@ def open_output_file(msg):
 # @param msg error message
 # @return None
 def semantic(msg):
-    eprint("Semantic error: {}".fomrat(msg))
+    eprint("Semantic error: {}".format(msg))
     exit(52)
 
 ##
@@ -74,7 +74,7 @@ def semantic(msg):
 # @param msg error message
 # @return None
 def operands_types(msg):
-    eprint("Bad operands types: {}".fomrat(msg))
+    eprint("Bad operands types: {}".format(msg))
     exit(53)
 ##
 # print msg on stderr and exit with code 54
