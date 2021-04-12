@@ -828,12 +828,32 @@ class inscructions:
     # interpret instruction DPRINT
     # @param self
     # @param args args for inscruction
-    def dprint(self):
-        pass
+    def dprint(self, args):
+        self.args_check([
+            ['int', 'string', 'float', 'type', 'bool', 'nil']
+        ], args)
+
+        errors.eprint(self._value(args[0]))
 
     ##
     # interpret instruction BREAK
     # @param self
     # @param args args for inscruction
-    def break_f(self):
-        pass
+    def break_f(self, args):
+        self.args_check([], args)
+
+        errors.eprint("\n------------------------")
+        errors.eprint("IPP21 interpret status\n")
+        errors.eprint("inscruction pointer: {}".format(self.ip))
+        errors.eprint("\nsymtable:")
+        errors.eprint("   labels: {}".format(self.symtable.labels))
+        errors.eprint("   frames: {}".format(self.symtable.frames))
+        errors.eprint("   GF frame: {}".format(self.symtable.frames[0].table))
+        
+        if len(self.symtable.frames) > 1:
+            errors.eprint("   LF frame: {}".format(self.symtable.frames[-1].table))
+
+        if hasattr(self.symtable, 'tmpframe'):
+            errors.eprint("   TF frame: {}".format(self.symtable.tmpframe.table))
+
+        self.ip += 1

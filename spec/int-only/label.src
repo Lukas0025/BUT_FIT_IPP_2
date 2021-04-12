@@ -21,7 +21,6 @@
         <arg2 type="var">GF@val</arg2>
         <arg3 type="int">1</arg3>
     </instruction>
-        <instruction order="16" opcode="jump">
-        <arg1 type="label">světe</arg1>
+        <instruction order="16" opcode="break">
     </instruction>
 </program>
