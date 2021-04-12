@@ -1,58 +1,37 @@
-from inscructions import inscructions
-from symtable import symtable
+from program_file import program_file
+from ipp21 import ipp21
+import sys, getopt
 import errors
 
-class ipp21(inscructions):
-    def __init__(self, program):
-        self.ip = 0
-        self.symtable = symtable()
-        self.program = program
-        self.stack = []
-        self.return_stack = []
+def main(argv):
+    program = None
+    input_file = None
 
-    def _sort_params(self, params):
-        sorted_params = []
+    try:
+        opts, args = getopt.getopt(argv,"",["source=","input=", "help"])
+    except getopt.GetoptError:
+        help()
+        errors.cli_params("bad cli params used")
+        
+    for opt, arg in opts:
+        if opt == '--help':
+            print('interpret.py --source <sourcefile> --input <inputfile>')
+            sys.exit()
+        elif opt in ("--source"):
+            program = program_file(arg)
+        elif opt in ("--input"):
+            try:
+                input_file = open(arg, "r")
+            except FileNotFoundError as error:
+                errors.open_input_file(error)
+            except Exception:
+                errors.open_input_file("unexpected error")
 
-        for j in range(len(params)):
-            for i in range(len(params)):
-                if params[i].tag.lower() == "arg{}".format(j + 1):
-                    sorted_params.append(params[i])
+    
+    interpret = ipp21(program)
+    interpret.run(input_file)
 
-        if len(sorted_params) != len(params):
-            errors.xml_struct("unexpected tag in arguments for {}".format(params.tag.lower()))
+if __name__ == "__main__":
+   main(sys.argv[1:])
 
-        return sorted_params
 
-    def _opcode(self, inscruction):
-        attrs = self.program._get_lower_attrib(inscruction)
-
-        if 'opcode' not in attrs:
-            errors.xml_struct("no opcode for inscruction ip:{}".format(self.ip))
-
-        return attrs['opcode']
-
-    def run(self):
-
-        #get labels first
-        for i in range(self.program.length()):
-            self.ip = i
-            instruction = self.program.get(self.ip)
-            if self._opcode(instruction) == 'label':
-                self.label(self._sort_params(instruction))
-
-        #now run program
-        self.ip = 0
-        while True:
-            instruction = self.program.get(self.ip)
-            opcode = self._opcode(instruction)
-            
-            if opcode != 'label':
-                callable_instruction = self.get_inscrustion(opcode)
-                
-                params = self._sort_params(instruction)
-                callable_instruction(params)
-            else:
-                self.ip += 1
-                
-            if self.ip >= self.program.length():
-                break

@@ -10,8 +10,8 @@ class program_file:
             errors.xml("xml error: {}".format(error))
         except FileNotFoundError as error:
             errors.open_input_file(error)
-        except Exception as e:
-            errors.inner(e.message)
+        except Exception:
+            errors.open_input_file("unexpected error")
         
         self._check_header()
         self._sort_tree()

@@ -628,8 +628,54 @@ class inscructions:
     # interpret instruction READ
     # @param self
     # @param args args for inscruction
-    def read(self):
-        pass
+    def read(self, args):
+        self.args_check([
+            ['var'],
+            ['type']
+        ], args)
+
+        readedtype = self._value(args[1]).lower()
+
+        if readedtype not in ['int', 'float', 'bool', 'string']:
+            errors.semantic("unsuported type to read {}".format(readedtype))
+
+        if self.infile == None:
+            readed = input()
+        else:
+            readed = infile.readline()
+
+        ## check type
+        if readedtype == 'int':
+            try:
+                readed = int(readed)
+            except:
+                readed = "nil"
+                readedtype = "nil"
+
+        elif readedtype == 'float':
+            try:
+                readed = float(readed)
+            except:
+                readed = "nil"
+                readedtype = "nil"
+
+        elif readedtype == 'bool':
+            readed = readed.lower()
+            if readed == "true":
+                readed = True
+            elif readed == "false":
+                readed = False
+            else:
+                readed = "nil"
+                readedtype = "nil"
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            readedtype,
+            str(readed)
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction WRITE
