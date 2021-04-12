@@ -36,7 +36,7 @@ class frame:
 
 class symtable:
     frames_types = ('gf', 'lf', 'tf')
-    var_types    = ('int', 'float', 'bool', 'string', 'nil')
+    var_types    = ('int', 'float', 'bool', 'string', 'nil', 'type')
 
     def __init__(self):
         self.frames = [frame()]

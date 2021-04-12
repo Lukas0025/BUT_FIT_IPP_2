@@ -129,10 +129,10 @@ class inscructions:
         except KeyError:
             errors.xml_struct("no type attribute for arg")
 
-        if valtype not in ['int', 'float', 'string', 'label', 'bool', 'var']:
+        if valtype not in ['int', 'float', 'string', 'label', 'bool', 'var', 'type']:
             errors.xml_struct("bad type in type attrib {}".format(vartype))
 
-        if vartype != 'var':
+        if vartype != 'var' and vartype != 'label':
             return "{}@{}".format(vartype, arg.text)
         else:
             return arg.text
@@ -614,7 +614,7 @@ class inscructions:
     # interpret instruction CONCAT
     # @param self
     # @param args args for inscruction
-    def concat(self):
+    def concat(self, args):
         self.args_check([
             ['var'],
             ['string'],
@@ -633,7 +633,7 @@ class inscructions:
     # interpret instruction STRLEN
     # @param self
     # @param args args for inscruction
-    def strlen(self):
+    def strlen(self, args):
         self.args_check([
             ['var'],
             ['string']
@@ -651,7 +651,7 @@ class inscructions:
     # interpret instruction GETCHAR
     # @param self
     # @param args args for inscruction
-    def getchar(self):
+    def getchar(self, args):
         self.args_check([
             ['var'],
             ['string'],
@@ -670,7 +670,7 @@ class inscructions:
     # interpret instruction SETCHAR
     # @param self
     # @param args args for inscruction
-    def setchar(self):
+    def setchar(self, args):
         self.args_check([
             ['var'],
             ['int'],
@@ -692,15 +692,36 @@ class inscructions:
     # interpret instruction TYPE
     # @param self
     # @param args args for inscruction
-    def type_f(self):
-        pass
+    def type_f(self, args):
+        self.args_check([
+            ['var'],
+            ['var']
+        ], args)
+
+        self.symtable.set_value(
+            self._get_typeval(args[0]),
+            "type",
+            self._type_of(args[1])
+        )
+
+        self.ip += 1
 
     ##
     # interpret instruction LABEL
     # @param self
     # @param args args for inscruction
-    def label(self):
-        pass
+    def label(self, args):
+        self.args_check([
+            ['label']
+        ], args)
+
+        self.symtable.def_label(
+            self._val(arg[1])
+            self.ip
+        )
+
+        self.ip += 1
+
 
     ##
     # interpret instruction JUMP
