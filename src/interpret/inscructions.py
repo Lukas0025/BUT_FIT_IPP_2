@@ -812,8 +812,17 @@ class inscructions:
     # interpret instruction EXIT
     # @param self
     # @param args args for inscruction
-    def exit(self):
-        pass
+    def exit(self, args):
+        self.args_check([
+            ['int']
+        ], args)
+
+        retcode = self._typed_value(args[0])
+
+        if retcode not in range(0,49):
+            errors.operand_value("invalid exit code {}".format(retcode))
+
+        exit(retcode)
 
     ##
     # interpret instruction DPRINT
