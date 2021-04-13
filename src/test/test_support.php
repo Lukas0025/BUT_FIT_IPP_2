@@ -1,6 +1,7 @@
 <?php
 
     function recursive_tests($test_path, &$tests, $parse, $parse_path, $int_path) {
+        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path);
         foreach (glob($test_path.'/*', GLOB_ONLYDIR) as $dir) {
             run_tests_indir($dir, $tests, $parse, $parse_path, $int_path);
             recursive_tests($dir, $tests, $parse, $parse_path, $int_path);
