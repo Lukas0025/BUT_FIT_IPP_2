@@ -1,47 +1,4 @@
 <?php
-$simple_css = ".forderbase > * {
-        display: inline-block;
-        font-size: 27px;
-        font-weight: bold;
-    }
-    
-    .forderbase {
-        background-color: lightgray;
-        border-radius: 20px;
-        padding: 22px;
-    }
-    
-    .progress {
-        float: right;
-    }
-    
-    .tests {
-        margin-left: 30px;
-    }
-    
-    .tests {
-        background-color: #f3f1f1;
-        border-radius: 10px;
-        padding: 16px;
-    }
-    
-    .pass > .status {
-        color: green;
-    }
-
-    .pass > .fail {
-        color: green;
-    }
-    
-    .base {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    
-    .info {
-        margin-left: 25px;
-    }";
-
     function test_html($name, $pass) {
         
         $status = $pass ? "PASS" : "FAIL";
@@ -52,7 +9,7 @@ $simple_css = ".forderbase > * {
                 <span class='status'>$status</span> - 
                 <span class='name'>$name</span>
             </div>
-        </div>";
+        </div><hr>";
     }
 
     function forder_html($name, $success_rate, $tests) {
@@ -71,6 +28,54 @@ $simple_css = ".forderbase > * {
     }
 
     function generate_html($body) {
+        $simple_css = ".forderbase > * {
+            display: inline-block;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .title {
+            text-align: center;
+            margin: 40px;
+        }
+        
+        .forderbase {
+            background-color: lightgray;
+            border-radius: 20px;
+            padding: 22px;
+        }
+        
+        .progress {
+            float: right;
+        }
+        
+        .tests {
+            margin-left: 30px;
+        }
+        
+        .tests {
+            background-color: #f3f1f1;
+            border-radius: 10px;
+            padding: 16px;
+        }
+        
+        .pass > .status {
+            color: green;
+        }
+    
+        .fail > .status {
+            color: red;
+        }
+        
+        .base {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .info {
+            margin-left: 25px;
+        }";
+
         return "<html><head><style>$simple_css</style></head><body>$body</body></html>";
     }
 

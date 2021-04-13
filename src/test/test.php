@@ -1,61 +1,85 @@
 <?php
     include "html.php";
+    include "test_support.php";
 
-    function exec_test($command, $test_name) {
-        exec("$command > $test_name.testout", $output, $rc);
-        file_put_contents($test_name.'.testrc', "$rc\n");
+    ini_set('display_errors', 'stderr');
+
+    function error_print($msg) {
+        fwrite(STDERR, "$msg\n");
+        exit(10);
+    }
+    
+    $longopts  = array(
+        "help",
+        "directory:",
+        "recursive",
+        "parse-script:",
+        "int-script:",
+        "parse-only",
+        "int-only",
+        "jexamxml:",
+        "jexamcfg:"
+    );
+    
+    $options = getopt("", $longopts);
+    $parse = FALSE;
+    $interp = FALSE;
+    $parse_path = null;
+    $int_path = null;
+
+    if (!array_key_exists("directory", $options)) {
+        error_print("need directory param");
     }
 
-    function test_passed($test_name) {
-        if (!file_exists($test_name.'.rc')) {
-            file_put_contents($test_name.'.rc', "0\n");
-        }
+    $test_path = $options['directory'];
 
-        $retval = null;
-        $output = null;
-        exec("diff --ignore-all-space $test_name.rc $test_name.testrc", $output, $retval);
-        if ($retval != 0) return false;
-        
-        exec("diff $test_name.out $test_name.testout", $output, $retval);
-        if ($retval != 0) return false;
-
-        return true;
+    if (array_key_exists("parse-only", $options) && array_key_exists("int-only", $options)) {
+        error_print("cant do --parse-only and --int-only in same time");
+    } else if (!array_key_exists("parse-only", $options) && !array_key_exists("int-only", $options)) {
+        error_print("need --parse-only or --int-only");
+    } else if (array_key_exists("parse-only", $options)) {
+        $parse = TRUE;
+    } else {
+        $interp = TRUE;
     }
 
-    $test_path = "/home/lukasplevac/Plocha/tests";
-    $int_path = "python3 ../interpret/interpret.py";
-
-    $passed = [];
-    $failed = [];
-
-    foreach (glob("$test_path/*/*.src") as $filename) {
-        $test_name = substr($filename, 0, -4);
-
-        if (file_exists($test_name.'.in')) {
-            exec_test("$int_path --source $filename --input $test_name.in", $test_name);
-        } else {
-            exec_test("$int_path --source $filename", $test_name);
+    if ($parse) {
+        if (!array_key_exists("parse-script", $options)) {
+            error_print("need --parse-script");
         }
 
-        if (test_passed($test_name)) {
-            array_push($passed, $test_name);
-        } else {
-            array_push($failed, $test_name);
+        $parse_path = $options['parse-script'];
+    } else {
+        if (!array_key_exists("int-script", $options)) {
+            error_print("need --int-script");
         }
+
+        $int_path = $options['int-script'];
     }
+
+    $recursive = FALSE;
+    if (array_key_exists("recursive", $options)) {
+        $recursive = TRUE;
+    }
+
+    $tests = [];
+
+    if ($recursive) {
+        recursive_tests($test_path, $tests, $parse, $parse_path, $int_path);
+    } else {
+        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path);
+    }
+    
 
     $html = "";
-    foreach ($failed as $fail) {
-        $html .= test_html($fail, false);
+    foreach ($tests as $dir => $dir_tests) {
+        $test_html = "";
+        foreach ($dir_tests as $test) {
+            $test_html .= test_html($test[0], $test[1]);
+        }
+
+        $html .= forder_html($dir, successRate($dir_tests), $test_html);
     }
 
-    foreach ($passed as $pass) {
-        $html .= test_html($pass, true);
-    }
-
-    echo $html;
-
-    echo count($failed)
-
-
+    echo generate_html("<h1 class='title'>IPP Automatické testy - " . fullSuccessRate($tests) . "%</h1>" . $html);
 ?>
