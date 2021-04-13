@@ -10,12 +10,12 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"",["source=","input=", "help"])
     except getopt.GetoptError:
-        help()
+        errors.eprint("interpret.py --source <sourcefile> --input <inputfile>")
         errors.cli_params("bad cli params used")
         
     for opt, arg in opts:
         if opt == '--help':
-            print('interpret.py --source <sourcefile> --input <inputfile>')
+            print('simple IPP21 interpret\n\ninterpret.py --source <sourcefile> --input <inputfile>')
             sys.exit()
         elif opt in ("--source"):
             program = program_file(arg)
@@ -26,6 +26,9 @@ def main(argv):
                 errors.open_input_file(error)
             except Exception:
                 errors.open_input_file("unexpected error")
+
+    if (program == None):
+        errors.cli_params("no --source param")
 
     
     interpret = ipp21(program)

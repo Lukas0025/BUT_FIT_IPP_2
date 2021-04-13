@@ -27,6 +27,20 @@
     $parse_path = null;
     $int_path = null;
 
+    if (array_key_exists("help", $options)) {
+        print_r("simeple test script for IPP21 project\n\n");
+        print_r("Params:\n");
+        print_r("--directory with tests directory\n");
+        print_r("--recursive find test in subdirs\n");
+        print_r("--parse-script testing parse script\n");
+        print_r("--int-script testing interpret script\n");
+        print_r("--parse-only run only parse tests\n");
+        print_r("--int-only run only interpret tests\n");
+        print_r("--jexamxml\n");
+        print_r("--jexamcfg\n");
+        exit(0);
+    }
+
     if (!array_key_exists("directory", $options)) {
         error_print("need directory param");
     }
