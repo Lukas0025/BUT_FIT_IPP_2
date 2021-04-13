@@ -8,6 +8,6 @@ zip:
 	rm -rf tmpzip
 
 test: zip
-	php src/test/test.php --directory ./spec/int-only --int-only --recuesive --int-script src/interpret/interpret.py > testout.html
+	php src/test/test.php --directory ./spec/int-only --int-only --recursive --int-script src/interpret/interpret.py > testout.html
 	./spec/is_it_ok.sh  xpleva07.zip tmpzip
 	rm -rf tmpzip
