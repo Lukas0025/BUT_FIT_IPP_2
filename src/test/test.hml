@@ -1,0 +1,841 @@
+<div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/AND/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/AND/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/AND/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CREATEFRAME/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EQ/8</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GETCHAR/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GT/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/INT2CHAR/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/INT2CHAR/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/INT2CHAR/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/INT2CHAR/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/10</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/8</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/10</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/8</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LABEL/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LT/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MOVE/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/NOT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/NOT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPFRAME/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPFRAME/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPFRAME/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPS/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPS/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHFRAME/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHS/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHS/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/READ/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/READ/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/READ/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SETCHAR/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRI2INT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRI2INT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRI2INT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRLEN/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRLEN/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRLEN/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SUB/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SUB/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SUB/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/9</span>
+            </div>
+        </div><div class='test'>
+            <div class='fail base'>
+                <span class='status'>FAIL</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/WRITE/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/ADD/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/ADD/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/ADD/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/ADD/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/AND/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/AND/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CALL/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CALL/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CALL/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CONCAT/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CREATEFRAME/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CREATEFRAME/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/CREATEFRAME/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/DEFVAR/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/DEFVAR/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/EXIT/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GETCHAR/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GETCHAR/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GETCHAR/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/GETCHAR/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/IDIV/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/INT2CHAR/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMP/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMP/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFEQ/9</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/JUMPIFNEQ/9</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LABEL/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/LABEL/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MOVE/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MOVE/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MOVE/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/MUL/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/NOT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/NOT/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/NOT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/OR/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/POPS/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHFRAME/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHFRAME/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHFRAME/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHS/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/PUSHS/4</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/READ/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/READ/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/RETURN/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRI2INT/3</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRI2INT/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRLEN/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/STRLEN/5</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/SUB/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/6</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/7</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/TYPE/8</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/WRITE/1</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/WRITE/2</span>
+            </div>
+        </div><div class='test'>
+            <div class='pass base'>
+                <span class='status'>PASS</span> - 
+                <span class='name'>/home/lukasplevac/Plocha/tests/WRITE/3</span>
+            </div>
+        </div>

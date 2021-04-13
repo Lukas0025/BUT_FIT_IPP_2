@@ -13,9 +13,12 @@ class frame:
             "value": None
         }
 
+    def is_uninit(self, name):
+        return self.table[name]['type'] == None
+
     def set_value(self, name, valtype, value):
         if name not in self.table:
-            errors.semantic("{} var not exist in frame".format(name))
+            errors.var_not_exist("{} var not exist in frame".format(name))
 
         self.table[name] = {
             "type": valtype,
@@ -24,13 +27,16 @@ class frame:
 
     def get_value(self, name):
         if name not in self.table:
-            errors.semantic("{} var not exist in frame".format(name))
+            errors.var_not_exist("{} var not exist in frame".format(name))
+
+        if self.is_uninit(name):
+            errors.missing_val_ret_stack("var {} is uninicalized".format(name))
 
         return self.table[name]['value']
 
     def get_type(self, name):
         if name not in self.table:
-            errors.semantic("{} var not exist in frame".format(name))
+            errors.var_not_exist("{} var not exist in frame".format(name))
 
         return self.table[name]['type']
 
@@ -70,6 +76,12 @@ class symtable:
 
         return frame.get_type(parsed_name['name'])
 
+    def is_uninit(self, name):
+        parsed_name = self._parse_name(name)
+        frame = self._get_frame(parsed_name['type'])
+
+        return frame.is_uninit(parsed_name['name'])
+
     def get_type_str(self, name):
         parsed_name = self._parse_name(name)
 
@@ -106,7 +118,7 @@ class symtable:
         del self.tmpframe
 
     def pop_frame(self):
-        if len(self.frames < 2):
+        if len(self.frames) < 2:
             errors.frame_not_exist("try pop not exist local frame")
 
         self.tmpframe = self.frames.pop()

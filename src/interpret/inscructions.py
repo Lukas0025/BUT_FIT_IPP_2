@@ -30,7 +30,7 @@ class inscructions:
             'or': self.or_f,
             'not': self.not_f,
             'int2char': self.int2char,
-            'str2int': self.str2int,
+            'stri2int': self.str2int,
             'read': self.read,
             'write': self.write,
             'print': self.write, # write alias
@@ -86,7 +86,8 @@ class inscructions:
     # @param self
     # @param needs array of possible types or args ex. [['var'], ['int', 'float']]
     # @param args args for inscruction
-    def args_check(self, needs, args):
+    # @param uninit bool accept uninited vars
+    def args_check(self, needs, args, uninit = False):
         if len(needs) != len(args):
             errors.xml_struct("bad args count for opcodes ip:{}".format(self.ip))
 
@@ -100,6 +101,10 @@ class inscructions:
                 if vartype not in needs[i]:
                     errors.operands_types("bad type of operand expected {} given ['{}'] ip:{}".format(needs[i], vartype,self.ip))
             elif self._type_of(args[i]) not in needs[i]:
+                
+                if not uninit:
+                    self._value(args[i])
+
                 errors.operands_types("bad type of operand expected {} given {} ip:{}".format(needs[i], self._type_of(args[i]), self.ip))
                 
     ##
@@ -156,7 +161,7 @@ class inscructions:
         except KeyError:
             errors.xml_struct("no type attribute for arg")
 
-        if vartype not in ['int', 'float', 'string', 'label', 'bool', 'var', 'type']:
+        if vartype not in ['int', 'float', 'string', 'label', 'bool', 'var', 'type', 'nil']:
             errors.xml_struct("bad type in type attrib {}".format(vartype))
 
         if vartype != 'var' and vartype != 'label':
@@ -193,7 +198,7 @@ class inscructions:
     # @param args args for inscruction
     def createframe(self, args):
         self.args_check([], args)
-        self.symtable.createframe()
+        self.symtable.create_frame()
         self.ip += 1
 
     ##
@@ -202,7 +207,7 @@ class inscructions:
     # @param args args for inscruction
     def pushframe(self, args):
         self.args_check([], args)
-        self.symtable.pushframe()
+        self.symtable.push_frame()
         self.ip += 1
 
     ##
@@ -211,7 +216,7 @@ class inscructions:
     # @param args args for inscruction
     def popframe(self, args):
         self.args_check([], args)
-        self.symtable.popframe()
+        self.symtable.pop_frame()
         self.ip += 1
 
     ##
@@ -259,7 +264,6 @@ class inscructions:
     # @param args args for inscruction
     def pushs(self, args):
         self.args_check([
-            ['var'],
             ['string', 'int', 'float', 'bool', 'nil']
         ], args)
 
@@ -278,6 +282,9 @@ class inscructions:
         self.args_check([
             ['var']
         ], args)
+
+        if len(self.stack) < 1:
+            errors.missing_val_ret_stack("cant pop from empty stack")
 
         var = self.stack.pop()
 
@@ -450,14 +457,14 @@ class inscructions:
     def lt(self, args):
         self.args_check([
             ['var'],
-            ['string', 'int', 'float', 'bool'],
-            ['string', 'int', 'float', 'bool']
+            ['string', 'int', 'float', 'bool', 'type'],
+            ['string', 'int', 'float', 'bool', 'type']
         ], args)
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._typed_value(args[2]):
+        if self._type_of(args[1]) != self._type_of(args[2]):
             errors.operands_types("fail to do LT with this types")
 
         out = a < b
@@ -477,15 +484,15 @@ class inscructions:
     def gt(self, args):
         self.args_check([
             ['var'],
-            ['string', 'int', 'float', 'bool'],
-            ['string', 'int', 'float', 'bool']
+            ['string', 'int', 'float', 'bool', 'type'],
+            ['string', 'int', 'float', 'bool', 'type']
         ], args)
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._typed_value(args[2]):
-            errors.operands_types("fail to do LT with this types")
+        if self._type_of(args[1]) != self._type_of(args[2]):
+            errors.operands_types("fail to do GT with this types")
 
         out = a > b
 
@@ -504,15 +511,17 @@ class inscructions:
     def eq(self, args):
         self.args_check([
             ['var'],
-            ['string', 'int', 'float', 'bool'],
-            ['string', 'int', 'float', 'bool']
+            ['string', 'int', 'float', 'bool', 'type', 'nil'],
+            ['string', 'int', 'float', 'bool', 'type', 'nil']
         ], args)
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._typed_value(args[2]):
-            errors.operands_types("fail to do LT with this types")
+        if self._type_of(args[1]) == 'nil' or self._type_of(args[2]) == 'nil':
+            pass
+        elif self._type_of(args[1]) != self._type_of(args[2]):
+            errors.operands_types("fail to do EQ with this types")
 
         out = a == b
 
@@ -579,7 +588,6 @@ class inscructions:
     def not_f(self, args):
         self.args_check([
             ['var'],
-            ['bool'],
             ['bool']
         ], args)
 
@@ -605,16 +613,19 @@ class inscructions:
             ['int']
         ], args)
 
-        self.symtable.set_value(
-            self._get_typeval(args[0]),
-            self._type_of(args[1]),
-            chr(self._typed_value(args[1]))
-        )
+        try:
+            self.symtable.set_value(
+                self._get_typeval(args[0]),
+                'string',
+                chr(self._typed_value(args[1]))
+            )
+        except:
+            errors.string("fail to converse int2char with {}".format(self._get_typeval(args[1])))
 
         self.ip += 1
 
     ##
-    # interpret instruction STR2INT
+    # interpret instruction STRI2INT
     # @param self
     # @param args args for inscruction
     def str2int(self, args):
@@ -624,10 +635,16 @@ class inscructions:
             ['int']
         ], args)
 
+        string = self._typed_value(args[1])
+        index = self._typed_value(args[2])
+
+        if index not in range(len(string)):
+            errors.string("try do stri2int on unexist position {}".format(index))
+
         self.symtable.set_value(
             self._get_typeval(args[0]),
             self._type_of(args[1]),
-            ord(self._typed_value(args[1])[self._typed_value(args[2])])
+            ord(string[index])
         )
 
         self.ip += 1
@@ -645,37 +662,37 @@ class inscructions:
         readedtype = self._value(args[1]).lower()
 
         if readedtype not in ['int', 'float', 'bool', 'string']:
-            errors.semantic("unsuported type to read {}".format(readedtype))
+            errors.operand_value("unsuported type to read {}".format(readedtype))
 
-        if self.infile == None:
-            readed = input()
-        else:
-            readed = infile.readline()
+        try:
+            if self.infile == None:
+                readed = input()
+            else:
+                readed = self.infile.readline()
+        except:
+                readed = "nil"
+                readedtype = "nil"
 
         ## check type
-        if readedtype == 'int':
-            try:
+        try:
+            if readedtype == 'int':
                 readed = int(readed)
-            except:
-                readed = "nil"
-                readedtype = "nil"
 
-        elif readedtype == 'float':
-            try:
+            elif readedtype == 'float':
                 readed = float(readed)
-            except:
-                readed = "nil"
-                readedtype = "nil"
 
-        elif readedtype == 'bool':
-            readed = readed.lower()
-            if readed == "true":
-                readed = True
-            elif readed == "false":
-                readed = False
-            else:
-                readed = "nil"
-                readedtype = "nil"
+            elif readedtype == 'bool':
+                readed = readed.lower()
+                if readed == "true":
+                    readed = True
+                elif readed == "false":
+                    readed = False
+                else:
+                    readed = "nil"
+                    readedtype = "nil"
+        except:
+            readed = "nil"
+            readedtype = "nil"
 
         self.symtable.set_value(
             self._get_typeval(args[0]),
@@ -694,10 +711,20 @@ class inscructions:
             ['string', 'int', 'float', 'bool', 'type', 'nil']
         ], args)
 
+        value = self._typed_value(args[0])
+        vtype = self._type_of(args[0])
+
+        if vtype == 'bool':
+            if value:
+                value = 'true'
+            else:
+                value = 'false'
+        elif vtype == 'nil':
+            value = ''
+
         print(
-            self.decode_escapes(self.symtable.get_value_str(
-                self._get_typeval(args[0])
-            )), end = ''
+            self.decode_escapes(str(value)),
+            end = ''
         )
 
         self.ip += 1
@@ -770,18 +797,23 @@ class inscructions:
     # @param args args for inscruction
     def setchar(self, args):
         self.args_check([
-            ['var'],
+            ['string'],
             ['int'],
             ['string']
         ], args)
 
-        curr = self._typed_value(args[0])
-        curr[self._typed_value(args[1])] = self._typed_value(args[2])[0]
+        curr = list(self._typed_value(args[0]))
+        index = self._typed_value(args[1])
+
+        if index not in range(len(curr)):
+            errors.string("put char on unexist position {}".format(index))
+
+        curr[index] = self._typed_value(args[2])[0]
 
         self.symtable.set_value(
             self._get_typeval(args[0]),
             "string",
-            curr
+            "".join(curr)
         )
 
         self.ip += 1
@@ -793,13 +825,17 @@ class inscructions:
     def type_f(self, args):
         self.args_check([
             ['var'],
-            ['var']
-        ], args)
+            ['int', 'float', 'bool', 'string', 'type', 'nil', None]
+        ], args, uninit = True)
+
+        typeof = self._type_of(args[1])
+        if typeof == None:
+            typeof = ''
 
         self.symtable.set_value(
             self._get_typeval(args[0]),
             "type",
-            self._type_of(args[1])
+            typeof
         )
 
         self.ip += 1
@@ -839,14 +875,16 @@ class inscructions:
     def jumpifeq(self, args):
         self.args_check([
             ['label'],
-            ['string', 'int', 'float', 'bool', 'type'],
-            ['string', 'int', 'float', 'bool', 'type']
+            ['string', 'int', 'float', 'bool', 'type', 'nil'],
+            ['string', 'int', 'float', 'bool', 'type', 'nil']
         ], args)
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._type_of(args[2]):
+        if self._type_of(args[1]) == 'nil' or self._type_of(args[2]) == 'nil':
+            pass
+        elif self._type_of(args[1]) != self._type_of(args[2]):
             errors.operands_types("fail to do JUMPIFEQ with this types {} and {}".format(
                 self._type_of(args[1]),
                 self._type_of(args[2])
@@ -864,14 +902,16 @@ class inscructions:
     def jumpifneq(self, args):
         self.args_check([
             ['label'],
-            ['string', 'int', 'float', 'bool', 'type'],
-            ['string', 'int', 'float', 'bool', 'type']
+            ['string', 'int', 'float', 'bool', 'type', 'nil'],
+            ['string', 'int', 'float', 'bool', 'type', 'nil']
         ], args)
 
         a = self._typed_value(args[1])
         b = self._typed_value(args[2])
 
-        if self._type_of(args[1]) != self._type_of(args[2]):
+        if self._type_of(args[1]) == 'nil' or self._type_of(args[2]) == 'nil':
+            pass
+        elif self._type_of(args[1]) != self._type_of(args[2]):
             errors.operands_types("fail to do JUMPIFNEQ with this types {} and {}".format(
                 self._type_of(args[1]),
                 self._type_of(args[2])
@@ -893,7 +933,7 @@ class inscructions:
 
         retcode = self._typed_value(args[0])
 
-        if retcode not in range(0,49):
+        if retcode not in range(0,50):
             errors.operand_value("invalid exit code {}".format(retcode))
 
         exit(retcode)
