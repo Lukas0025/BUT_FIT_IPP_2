@@ -81,9 +81,13 @@
         $output = null;
         exec("diff --ignore-all-space $test_name.rc $test_name.testrc", $output, $retval);
         if ($retval != 0) return false;
-        
-        exec("diff $test_name.out $test_name.testout", $output, $retval);
-        if ($retval != 0) return false;
+
+        $rc = fgets(fopen("$test_name.rc", 'r'));
+
+        if (trim($rc) == '0') {
+            exec("diff $test_name.out $test_name.testout", $output, $retval);
+            if ($retval != 0) return false;
+        }
 
         return true;
     }

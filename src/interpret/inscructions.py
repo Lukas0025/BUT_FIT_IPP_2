@@ -33,7 +33,6 @@ class inscructions:
             'stri2int': self.str2int,
             'read': self.read,
             'write': self.write,
-            'print': self.write, # write alias
             'concat': self.concat,
             'strlen': self.strlen,
             'getchar': self.getchar,
