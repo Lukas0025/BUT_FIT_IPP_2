@@ -8,6 +8,11 @@
         fwrite(STDERR, "$msg\n");
         exit(10);
     }
+
+    function error_print_io($msg) {
+        fwrite(STDERR, "$msg\n");
+        exit(41);
+    }
     
     $longopts  = array(
         "help",
@@ -91,6 +96,19 @@
     $recursive = FALSE;
     if (array_key_exists("recursive", $options)) {
         $recursive = TRUE;
+    }
+
+    //check if can access all dirs
+    if (!file_exists($test_path) || !is_dir($test_path)) {
+        error_print_io("cant open dir with path with tests");
+    }
+
+    if (!is_executable($parse_path) || !is_executable($int_path)) {
+        error_print_io("cant open prase script or int script");
+    }
+
+    if (!is_readable($jexamxml['jexamcfg']) || !is_executable($jexamxml['jexamxml'])) {
+        error_print_io("cant open jexam files");
     }
 
     $tests = [];

@@ -40,8 +40,17 @@
 
         foreach (glob("$test_path/*.src") as $filename) {
             $test_name = substr($filename, 0, -4);
+
+            if (!is_readable($filename)) {
+                error_print_io("cant open test file $filename");
+            }
     
             if (file_exists($test_name.'.in')) {
+
+                if (!is_readable($test_name.'.in')) {
+                    error_print_io("cant open test file $filename");
+                }
+
                 if ($parse) {
                     exec_test("$php_exec $parse_path < $filename", $test_name);
                 } else {
@@ -129,6 +138,14 @@
             file_put_contents($test_name.'.rc', "0\n");
         }
 
+        if (!is_readable($test_name.'.rc')) {
+            error_print_io("cant open test file $test_name.rc");
+        }
+
+        if (!is_readable($test_name.'.testrc')) {
+            error_print_io("cant open test file $test_name.testrc");
+        }
+
         $retval = null;
         $output = null;
 
@@ -138,6 +155,14 @@
         $rc = fgets(fopen("$test_name.rc", 'r'));
 
         if (trim($rc) == '0') { //if return coude is not zero i dont care about output
+
+            if (!is_readable($test_name.'.out')) {
+                error_print_io("cant open test file $test_name.out");
+            }
+            
+            if (!is_readable($test_name.'.testout')) {
+                error_print_io("cant open test file $test_name.testout");
+            }    
 
             if ($parse) {
                 exec("$java_exec -jar {$jexamxml['jexamxml']} $test_name.out $test_name.testout {$jexamxml['jexamcfg']}", $output, $retval);
