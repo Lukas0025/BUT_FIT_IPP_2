@@ -103,11 +103,15 @@
         error_print_io("cant open dir with path with tests");
     }
 
-    if (!is_executable($parse_path) || !is_executable($int_path)) {
-        error_print_io("cant open prase script or int script");
+    if (!is_readable($parse_path) && $parse) {
+        error_print_io("cant open prase script");
     }
 
-    if (!is_readable($jexamxml['jexamcfg']) || !is_executable($jexamxml['jexamxml'])) {
+    if (!is_readable($int_path) && !$parse) {
+        error_print_io("cant open int script");
+    }
+
+    if (!is_readable($jexamxml['jexamcfg']) || !is_readable($jexamxml['jexamxml'])) {
         error_print_io("cant open jexam files");
     }
 
@@ -131,4 +135,6 @@
     }
 
     echo generate_html("<h1 class='title'>IPP Automatické testy - " . fullSuccessRate($tests) . "%</h1>" . $html);
+
+    exit(0);
 ?>
