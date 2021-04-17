@@ -57,6 +57,23 @@
         $interp = TRUE;
     }
 
+    $jexamxml = [
+        "jexamxml" => "",
+        "jexamcfg" => ""
+    ];
+
+    if (array_key_exists("jexamxml", $options)) {
+        $jexamxml["jexamxml"] = $options["jexamxml"];
+    } else {
+        $jexamxml["jexamxml"] = "/pub/courses/ipp/jexamxml/jexamxml.jar";
+    }
+    
+    if  (array_key_exists("jexamcfg", $options)) {
+        $jexamxml["jexamcfg"] = $options["jexamcfg"];
+    } else {
+        $jexamxml["jexamcfg"] = "/pub/courses/ipp/jexamxml/options";
+    }
+
     if ($parse) {
         if (!array_key_exists("parse-script", $options)) {
             error_print("need --parse-script");
@@ -79,9 +96,9 @@
     $tests = [];
 
     if ($recursive) {
-        recursive_tests($test_path, $tests, $parse, $parse_path, $int_path);
+        recursive_tests($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);
     } else {
-        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path);
+        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);
     }
     
 

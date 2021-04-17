@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Create HTML for one test
+     * @param $name name of test
+     * @param $pass bool if pass
+     * @return genarated html
+     */
     function test_html($name, $pass) {
         
         $status = $pass ? "PASS" : "FAIL";
@@ -12,6 +18,13 @@
         </div><hr>";
     }
 
+    /**
+     * Create HTML of forder of tests
+     * @param $name name of forder
+     * @param $success_rate success rate of tests in dir in %
+     * @param $tests html of tests in dir
+     * @return genarated html
+     */
     function forder_html($name, $success_rate, $tests) {
         return "<div class='forder'>
             <div class='forderbase'>
@@ -27,6 +40,11 @@
         </div>";
     }
 
+    /**
+     * Create HTML of page
+     * @param $body html of body
+     * @return genarated html
+     */
     function generate_html($body) {
         $simple_css = ".forderbase > * {
             display: inline-block;
@@ -76,6 +94,6 @@
             margin-left: 25px;
         }";
 
-        return "<html><head><style>$simple_css</style></head><body>$body</body></html>";
+        return "<!DOCTYPE html><html><head><style>$simple_css</style></head><body>$body</body></html>";
     }
 

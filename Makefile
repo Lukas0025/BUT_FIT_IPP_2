@@ -8,6 +8,11 @@ zip:
 	cp tmpzip/xpleva07.zip ./
 	rm -rf tmpzip
 
+jexamxml:
+	mkdir jexamxml
+	cd jexamxml && wget http://www.a7soft.com/jexamxml.zip && \
+	unzip jexamxml.zip
+
 test: zip
 	php src/test/test.php --directory ./spec/int-only --int-only --recursive --int-script src/interpret/interpret.py > testout.html
 	./spec/is_it_ok.sh  xpleva07.zip tmpzip
@@ -16,3 +21,4 @@ test: zip
 clean:
 	rm -rf xpleva07.zip
 	rm -rf tmpzip
+	rm -rf jexamxml
