@@ -2,6 +2,7 @@
     /* config for code interprets */
     $php_exec = "php";
     $python_exec = "python3";
+    $java_exec = "java";
 
     /**
      * Runs test rucursive for subdirs in dir and dir it self
@@ -111,7 +112,7 @@
      * check if test pass or not
      * @param $test_name name of test for find output files
      * @param $parse say if parse program tests or interpret tests
-     * @param $jexamxml array of config for jexamxml diff if null
+     * @param $jexamxml array of config for jexamxml diff if $prase == false
      * @return bool
      */
     function test_passed($test_name, $parse, $jexamxml) {
@@ -121,13 +122,20 @@
 
         $retval = null;
         $output = null;
+
         exec("diff --ignore-all-space $test_name.rc $test_name.testrc", $output, $retval);
         if ($retval != 0) return false;
 
         $rc = fgets(fopen("$test_name.rc", 'r'));
 
-        if (trim($rc) == '0') {
-            exec("diff $test_name.out $test_name.testout", $output, $retval);
+        if (trim($rc) == '0') { //if return coude is not zero i dont care about output
+
+            if ($prase) {
+                exec("$java_exec -jar {$jexamxml['jexamxml']} $test_name.out $test_name.testout {$jexamxml['jexamcfg']}", $output, $retval);
+            } else {
+                exec("diff $test_name.out $test_name.testout", $output, $retval);
+            }
+
             if ($retval != 0) return false;
         }
 
