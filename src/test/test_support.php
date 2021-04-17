@@ -1,5 +1,10 @@
 <?php
     /* config for code interprets */
+    /* for merlin:
+        php7.4
+        python3.8
+        java
+    */
     $php_exec = "php";
     $python_exec = "python3";
     $java_exec = "java";

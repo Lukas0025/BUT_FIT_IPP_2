@@ -2,6 +2,7 @@ zip:
 	mkdir tmpzip
 	cp src/interpret/* ./tmpzip | true
 	cp src/test/* ./tmpzip | true
+	cp -r ./spec/int-only ./tmpzip/int-tests
 	cp README.md ./tmpzip/readme2.md
 	chmod +x ./tmpzip/*.php
 	cd tmpzip && zip -r xpleva07.zip *
