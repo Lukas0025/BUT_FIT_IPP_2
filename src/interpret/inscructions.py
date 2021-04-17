@@ -96,6 +96,9 @@ class inscructions:
             except KeyError:
                 errors.xml_struct("no type attribute for arg ip:{}".format(self.ip))
 
+            if args[i].tag.lower() == ("arg" + str(i)):
+                errors.xml_struct("bad arg tag name name for {}".format(self.ip))
+
             if "var" in needs[i] or "label" in needs[i]:
                 if vartype not in needs[i]:
                     errors.operands_types("bad type of operand expected {} given ['{}'] ip:{}".format(needs[i], vartype,self.ip))

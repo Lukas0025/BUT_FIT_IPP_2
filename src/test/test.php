@@ -107,17 +107,20 @@
         error_print_io("cant open prase script");
     }
 
-    if (!is_readable($int_path) && !$parse) {
-        error_print_io("cant open int script");
+    if ($parse) {
+        if (!is_readable($jexamxml['jexamcfg']) || !is_readable($jexamxml['jexamxml'])) {
+            error_print_io("cant open jexam files");
+        }
     }
 
-    if (!is_readable($jexamxml['jexamcfg']) || !is_readable($jexamxml['jexamxml'])) {
-        error_print_io("cant open jexam files");
+    if (!is_readable($int_path) && !$parse) {
+        error_print_io("cant open int script");
     }
 
     $tests = [];
 
     if ($recursive) {
+        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);
         recursive_tests($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);
     } else {
         run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);

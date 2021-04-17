@@ -19,7 +19,6 @@
      * @param $jexamxml array of config for jexamxml diff if null
      */
     function recursive_tests($test_path, &$tests, $parse, $parse_path, $int_path, $jexamxml) {
-        run_tests_indir($test_path, $tests, $parse, $parse_path, $int_path, $jexamxml);
         foreach (glob($test_path.'/*', GLOB_ONLYDIR) as $dir) {
             run_tests_indir($dir, $tests, $parse, $parse_path, $int_path, $jexamxml);
             recursive_tests($dir, $tests, $parse, $parse_path, $int_path, $jexamxml);

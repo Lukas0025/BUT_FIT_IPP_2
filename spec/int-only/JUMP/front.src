@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program language="IPPcode21">
+    <instruction order="1" opcode="JUMP">
+        <arg1 type="label">end</arg1>
+    </instruction>
+    <instruction order="2" opcode="write">
+        <arg1 type="string">Before</arg1>
+    </instruction>
+    <instruction order="3" opcode="label">
+        <arg1 type="label">end</arg1>
+    </instruction>
+    <instruction order="4" opcode="write">
+        <arg1 type="string">After</arg1>
+    </instruction>
+</program>
