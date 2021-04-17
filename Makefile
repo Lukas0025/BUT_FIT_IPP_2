@@ -14,8 +14,13 @@ jexamxml:
 	cd jexamxml && wget http://www.a7soft.com/jexamxml.zip && \
 	unzip jexamxml.zip
 
-test: zip
-	php src/test/test.php --directory ./spec/int-only --int-only --recursive --int-script src/interpret/interpret.py > testout.html
+test-dir: zip
+	mkdir tmpzip
+	cp xpleva07.zip ./tmpzip
+	cd ./tmpzip && unzip xpleva07.zip
+
+test: test-dir
+	php tmpzip/test.php --directory ./tmpzip/int-tests/ --int-only --recursive --int-script tmpzip/interpret.py > testout.html
 	./spec/is_it_ok.sh  xpleva07.zip tmpzip
 	rm -rf tmpzip
 
@@ -23,3 +28,5 @@ clean:
 	rm -rf xpleva07.zip
 	rm -rf tmpzip
 	rm -rf jexamxml
+	rm -rf */*/*.testout
+	rm -rf */*/*.testrc

@@ -36,6 +36,8 @@
      * @param $jexamxml array of config for jexamxml diff if null
      */
     function run_tests_indir($test_path, &$tests, $parse, $parse_path, $int_path, $jexamxml) {
+        global $php_exec, $python_exec;
+
         foreach (glob("$test_path/*.src") as $filename) {
             $test_name = substr($filename, 0, -4);
     
@@ -117,10 +119,12 @@
      * check if test pass or not
      * @param $test_name name of test for find output files
      * @param $parse say if parse program tests or interpret tests
-     * @param $jexamxml array of config for jexamxml diff if $prase == false
+     * @param $jexamxml array of config for jexamxml diff if $parse == false
      * @return bool
      */
     function test_passed($test_name, $parse, $jexamxml) {
+        global $java_exec;
+
         if (!file_exists($test_name.'.rc')) {
             file_put_contents($test_name.'.rc', "0\n");
         }
@@ -135,7 +139,7 @@
 
         if (trim($rc) == '0') { //if return coude is not zero i dont care about output
 
-            if ($prase) {
+            if ($parse) {
                 exec("$java_exec -jar {$jexamxml['jexamxml']} $test_name.out $test_name.testout {$jexamxml['jexamcfg']}", $output, $retval);
             } else {
                 exec("diff $test_name.out $test_name.testout", $output, $retval);
