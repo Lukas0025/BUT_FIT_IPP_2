@@ -51,6 +51,9 @@ class symtable:
     def _parse_name(self, name):
         name_split = name.split("@", 1)
 
+        if len(name_split) < 2:
+            errors.xml_struct("fail to decode name {}".format(name))
+
         return {'type': name_split[0].lower(), 'name': name_split[1]}
 
     def _get_frame(self, name):
