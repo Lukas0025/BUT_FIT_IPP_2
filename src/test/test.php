@@ -1,4 +1,11 @@
 <?php
+/**
+  * Project: ipp2
+  * Main file of tests runner
+  * @author Lukáš Plevač <xpleva07>
+  * @date 18.4.2021
+  */
+
     include "html.php";
     include "test_support.php";
 
