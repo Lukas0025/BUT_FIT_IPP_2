@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+##
+# Project: ipp2
+# file with IPP21 inscructions
+# @author Lukáš Plevač <xpleva07>
+# @date 18.4.2021
+
 import errors
 import re
 
