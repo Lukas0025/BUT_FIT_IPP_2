@@ -1,4 +1,11 @@
 <?php
+/**
+  * Project: ipp2
+  * file with PHP html generate functions
+  * @author Lukáš Plevač <xpleva07>
+  * @date 18.4.2021
+  */
+
     /**
      * Create HTML for one test
      * @param $name name of test
