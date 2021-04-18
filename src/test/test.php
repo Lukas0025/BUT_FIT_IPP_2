@@ -5,9 +5,9 @@
   * @author Lukáš Plevač <xpleva07>
   * @date 18.4.2021
   */
-
-    include "html.php";
-    include "test_support.php";
+  
+    require_once("html.php");
+    require_once("test_support.php");
 
     ini_set('display_errors', 'stderr');
 

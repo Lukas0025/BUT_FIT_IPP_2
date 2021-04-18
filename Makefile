@@ -20,7 +20,7 @@ test-dir: zip
 	cd ./tmpzip && unzip xpleva07.zip
 
 test: test-dir
-	php tmpzip/test.php --directory ./tmpzip/int-tests/ --int-only --recursive --int-script tmpzip/interpret.py > testout.html
+	php7.4 tmpzip/test.php --directory ./tmpzip/int-tests/ --int-only --recursive --int-script tmpzip/interpret.py > testout.html
 	./spec/is_it_ok.sh  xpleva07.zip tmpzip
 	rm -rf tmpzip
 
