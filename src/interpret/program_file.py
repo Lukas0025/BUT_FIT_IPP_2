@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 ##
 # Project: ipp2
-# file with ipp21 interpret implementation (TOP)
+# file with xml file reader
 # @author Lukáš Plevač <xpleva07>
 # @date 18.4.2021
 
