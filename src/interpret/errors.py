@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 ##
 # Project: ipp2
 # file with errors and exit codes
 # @author Lukáš Plevač <xpleva07>
-# @date 12.4.2021
+# @date 18.4.2021
 
 from __future__ import print_function
 import sys
