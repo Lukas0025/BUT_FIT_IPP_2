@@ -31,5 +31,13 @@ TOP soubor implementace je ipp21.py. Poté co je soubor programu nasčten a inst
 
 Provádí testování skriptů projektu prvního a druhé. výstup zobrazuje jako HTML stránku. Pokud všechny argumenty sedí a cesty k souborů a složkám jsou dostupné ke čtení spustí testy jinak skončí s chybou. Testy hledá pomocí `GLOB` jako `*.src` pokud najde spustí test a nsáledně pomocí `DIFF` zkontroluje návratový kód který se uloží do souboru *.testrc pokud odpovídá kóu v `*.rc` a je roven 0 tak ještě zkontroluje zda odpovídá `*.testout` a `*.out` (kontroluje pomocí `DIFF` nebo `jexamxml` zaáleží zda se testuje parser nebo interpret) pokud ano vydonotí že test prošel jinak hodnotí že neprošel. Soubory `*.test*` neodstranujě, aby bylo po testu možné zjiastit proč test neprošel. ty výsledky je nutné po testu odstranit ručně pomocí `rm -f *.testout && rm -f *.testrc`.
 
+## Makefile
+
+* zip - vytvoří zip archv pro odevzdání
+* jexamxml - stráhne jexamxml z internetu
+* test-dir - votvoří testovací složku které obasuhuje soubory zip archybu pro odevzdání
+* test - spustí testy pro interpret
+* clean - vyčistí lokální adresář projektu
+
 ## Rozšíření
 * Nedokončené FLOAT (bez podpory načtení se specifickým formátem)
