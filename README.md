@@ -19,7 +19,7 @@ Projekt 2. obsahuje dva seperátní skripty. První je interpret (v Python3) jaz
 * test_support.php - obsahuje funkce pro provedení testů a kontrolu výstupů testů
 * test.php - obashuje kontrolu argumentů příkazu, spustění testů a generování HTML pomocí pomocních PHP souborů
 
-## Tabulky symbolů
+## Tabulka symbolů
 
 je implementována v souboru `symtable.py`. Obsahuje zásobník rámců, přičemž po vytvoření objektu, již v zásobníku existuje jeden frame, který reprezentuje `GF`, dále obsahuje tabulku pro `labels` a proměnou pro `TF`. `frame` je objekt instace třídy `frame`, který obsahuje metody pro deklaraci proměnné, přiřazení hodnoty do proměnné a získání kodnoty proměnné, přečemž, když se nějaká z těchto operací nazdaří (proměnná neexistuje, není inicializována, ...) metoda ukončí interpret se specifickou chybou a podrobnosti vypíše na `STDERR`. Práce s lokálním rámecem `LF` je implemenaváná stejně jako s globálním (`LF`, `GF` a `TF` jsou instance stejné třídy), přičemž `LF` je chápán jako `frame_stack[-1]` za podmínky `len(frame_stack) > 1`.  Při volání `CREATEFRAME` bude vytvořena nová instance třídy frame a odkaz na ní bude uložen do tabulky symbolů. Při volání `PUSHFRAME` bude tento odkaz vložen za zásobník  `frame_stack`. Při volání `POPFRAME` bude vyjmut poslední `frame` z zásobníku a odkaz bude vložen do proměnné pro `TF`. `Labels` jsou řešeny mimo rámce, přímo v tabulce, jsou zde metody pro vytvoření `label` a zjištení adresy `label`, při chybě bude vyvoláno ukončení programu se specifickou chybou. Tabuka symbolů obsahuje také funkce na zjištění datového typu a hodnoty libovolného výrazu jako je např `GF@test` ale i `string@hello`, při chybě opět ukončuje program se specifickou chybou.
 
