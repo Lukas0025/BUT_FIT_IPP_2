@@ -3,6 +3,10 @@ import math
 import errors
 
 class program_file:
+    
+    ##
+    # Load program file and check headers and sort inst by order
+    # @param filename - str name of file
     def __init__(self, filename):
         try:
             self._xml_tree = ET.parse(filename)
@@ -16,6 +20,8 @@ class program_file:
         self._check_header()
         self._sort_tree()
 
+    ##
+    # Check if header of program is of IPP21
     def _check_header(self):
         root = self._xml_tree.getroot()
 
@@ -25,6 +31,10 @@ class program_file:
         if ('language' not in self._get_lower_attrib(root) or self._get_lower_attrib(root)['language'].lower() != 'ippcode21'):
             errors.xml_struct("bad language attribute for root tag")
 
+    ##
+    # Get all attributes of element in low case
+    # @param el - xml element
+    # @return array of arguments
     def _get_lower_attrib(self, el):
         out = {}
 
@@ -33,6 +43,8 @@ class program_file:
 
         return out
 
+    ##
+    # Sort inscrustions tree by order argument
     def _sort_tree(self):
 
         last_min = -math.inf
@@ -63,9 +75,16 @@ class program_file:
 
             self._sort_index.append(local_min['index'])
             last_min = local_min['value']
-
+    
+    ##
+    # Get count of inscritions in program
+    # @return int count
     def length(self):
         return len(self._xml_tree.getroot())
 
+    ##
+    # Get inscrition el on index (sorted) from 0 to N normalized
+    # @param index int index of inscrustion
+    # @return xml element
     def get(self, index):
         return self._xml_tree.getroot()[self._sort_index[index]]
