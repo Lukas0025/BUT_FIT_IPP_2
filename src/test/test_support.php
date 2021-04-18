@@ -1,12 +1,19 @@
 <?php
+/**
+  * Project: ipp2
+  * File with test run supports 
+  * @author Lukáš Plevač <xpleva07>
+  * @date 18.4.2021
+  */
+
     /* config for code interprets */
     /* for merlin:
         php7.4
         python3.8
         java
     */
-    $php_exec = "php";
-    $python_exec = "python3";
+    $php_exec = "php7.4";
+    $python_exec = "python3.8";
     $java_exec = "java";
 
     /**
