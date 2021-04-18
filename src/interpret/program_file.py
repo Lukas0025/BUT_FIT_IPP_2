@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+##
+# Project: ipp2
+# file with ipp21 interpret implementation (TOP)
+# @author Lukáš Plevač <xpleva07>
+# @date 18.4.2021
+
 import xml.etree.ElementTree as ET
 import math
 import errors
