@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+##
+# Project: ipp2
+# main file of project
+# @author Lukáš Plevač <xpleva07>
+# @date 18.4.2021
+
 from program_file import program_file
 from ipp21 import ipp21
 import sys, getopt
