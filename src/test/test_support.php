@@ -171,7 +171,7 @@
             }    
 
             if ($parse) {
-                exec("$java_exec -jar {$jexamxml['jexamxml']} $test_name.out $test_name.testout {$jexamxml['jexamcfg']}", $output, $retval);
+                exec("$java_exec -jar {$jexamxml['jexamxml']} $test_name.out $test_name.testout /dev/null {$jexamxml['jexamcfg']}", $output, $retval);
             } else {
                 exec("diff $test_name.out $test_name.testout", $output, $retval);
             }
